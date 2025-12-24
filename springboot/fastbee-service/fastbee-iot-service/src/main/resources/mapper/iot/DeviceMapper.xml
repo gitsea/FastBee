@@ -225,7 +225,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="tenantId != null "> and d.tenant_id = #{tenantId}</if>
             <if test="productId != null "> and d.product_id = #{productId}</if>
         </where>
-        group by d.device_id,d.user_id
+        group by d.device_id,d.user_id,p.device_type,
     </select>
 
     <select id="selectSerialNumberByProductId" parameterType="Long" resultType="String">
@@ -271,7 +271,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="isSimulate != null">and d.is_simulate = #{isSimulate}</if>
             <if test="params.beginActiveTime != null and params.beginActiveTime != '' and params.endActiveTime != null and params.endActiveTime != ''"> and d.active_time between #{params.beginActiveTime} and #{params.endActiveTime}</if>
         </where>
-        group by d.device_id,d.user_id
+        group by d.device_id,d.user_id,p.device_type,
         order by d.create_time desc
     </select>
 
