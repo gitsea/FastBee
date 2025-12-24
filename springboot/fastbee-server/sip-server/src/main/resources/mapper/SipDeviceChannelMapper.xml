@@ -18,7 +18,7 @@
         <result property="registerTime" column="register_time"/>
         <result property="deviceType" column="device_type"/>
         <result property="channelType" column="channel_type"/>
-        <result property="citycode" column="cityCode"/>
+        <result property="cityCode" column="cityCode"/>
         <result property="civilcode" column="civilCode"/>
         <result property="manufacture" column="manufacture"/>
         <result property="model" column="model"/>
@@ -60,26 +60,26 @@
                register_time,
                device_type,
                channel_type,
-               cityCode,
-               civilCode,
+               'cityCode',
+               'civilCode',
                manufacture,
                model,
                owner,
                block,
                address,
-               parentId,
-               ipAddress,
+               'parentId',
+               'ipAddress',
                port,
                password,
-               PTZType,
-               PTZTypeText,
+               'PTZType',
+               'PTZTypeText',
                status,
                longitude,
                latitude,
-               streamId,
-               subCount,
+               'streamId',
+               'subCount',
                parental,
-               hasAudio,
+               'hasAudio',
                del_flag,
                create_by,
                create_time,
@@ -104,7 +104,7 @@
             <if test="registerTime != null ">and register_time = #{registerTime}</if>
             <if test="deviceType != null  and deviceType != ''">and device_type = #{deviceType}</if>
             <if test="channelType != null  and channelType != ''">and channel_type = #{channelType}</if>
-            <if test="citycode != null  and citycode != ''">and cityCode = #{citycode}</if>
+            <if test="cityCode != null  and cityCode != ''">and cityCode = #{cityCode}</if>
             <if test="civilcode != null  and civilcode != ''">and civilCode = #{civilcode}</if>
             <if test="manufacture != null  and manufacture != ''">and manufacture = #{manufacture}</if>
             <if test="model != null  and model != ''">and model = #{model}</if>
@@ -147,7 +147,7 @@
             <if test="registerTime != null">register_time,</if>
             <if test="deviceType != null">device_type,</if>
             <if test="channelType != null">channel_type,</if>
-            <if test="citycode != null and citycode != ''">cityCode,</if>
+            <if test="cityCode != null and cityCode != ''">cityCode,</if>
             <if test="civilcode != null and civilcode != ''">civilCode,</if>
             <if test="manufacture != null and manufacture != ''">manufacture,</if>
             <if test="model != null and model != ''">model,</if>
@@ -187,7 +187,7 @@
             <if test="registerTime != null">#{registerTime},</if>
             <if test="deviceType != null">#{deviceType},</if>
             <if test="channelType != null">#{channelType},</if>
-            <if test="citycode != null and citycode != ''">#{citycode},</if>
+            <if test="cityCode != null and cityCode != ''">#{cityCode},</if>
             <if test="civilcode != null and civilcode != ''">#{civilcode},</if>
             <if test="manufacture != null and manufacture != ''">#{manufacture},</if>
             <if test="model != null and model != ''">#{model},</if>
@@ -231,7 +231,7 @@
             <if test="registerTime != null">register_time = #{registerTime},</if>
             <if test="deviceType != null">device_type = #{deviceType},</if>
             <if test="channelType != null">channel_type = #{channelType},</if>
-            <if test="citycode != null and citycode != ''">cityCode = #{citycode},</if>
+            <if test="cityCode != null and cityCode != ''">cityCode = #{cityCode},</if>
             <if test="civilcode != null and civilcode != ''">civilCode = #{civilcode},</if>
             <if test="manufacture != null and manufacture != ''">manufacture = #{manufacture},</if>
             <if test="model != null and model != ''">model = #{model},</if>

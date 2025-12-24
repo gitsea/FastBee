@@ -16,11 +16,11 @@ spring:
         testOnReturn: false
       datasource:
         master:
-          type: com.alibaba.druid.pool.DruidDataSource
-          driver-class-name: dm.jdbc.driver.DmDriver
-          url: jdbc:dm://192.168.5.12:5236/OPENSOURCE&useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
-          username: OPENSOURCE
-          password: fastbee@123
+          #type: com.alibaba.druid.pool.DruidDataSource
+          #driver-class-name: dm.jdbc.driver.DmDriver
+          #url: jdbc:dm://192.168.5.12:5236/OPENSOURCE&useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+          #username: OPENSOURCE
+          #password: fastbee@123
           druid:
             filters: stat
             stat:
@@ -37,11 +37,11 @@ spring:
   #          username: sa
   #          password: fastbee@123
   #        postgres: # 配置 postgres 数据源
-  #          type: com.alibaba.druid.pool.DruidDataSource
-  #          driver-class-name: org.postgresql.Driver
-  #          url: jdbc:postgresql://101.33.237.12:5432/fastbee?useUnicode=true&characterEncoding=utf8&useSSL=true&autoReconnect=true&reWriteBatchedInserts=true
-  #          username: root
-  #          password: fastbee@123
+          type: com.alibaba.druid.pool.DruidDataSource
+          driver-class-name: org.postgresql.Driver
+          url: jdbc:postgresql://172.18.105.21:5432/fastbee?useUnicode=true&characterEncoding=utf8&useSSL=true&autoReconnect=true&reWriteBatchedInserts=true
+          username: postgres
+          password: postgres
   #        dameng: # 配置达梦数据源
   #          type: com.alibaba.druid.pool.DruidDataSource
   #          driver-class-name: dm.jdbc.driver.DmDriver

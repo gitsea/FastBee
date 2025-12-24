@@ -30,7 +30,7 @@
                product_name,
                enabled,
                isdefault,
-               seniorSdp,
+               'seniorSdp',
                domain_alias,
                server_sipid,
                password,

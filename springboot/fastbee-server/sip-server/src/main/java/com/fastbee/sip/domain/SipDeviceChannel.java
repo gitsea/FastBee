@@ -118,7 +118,7 @@ public class SipDeviceChannel extends BaseEntity {
      */
     @ApiModelProperty("城市编码")
     @Excel(name = "城市编码")
-    private String citycode;
+    private String cityCode;
 
     /**
      * 行政区域
