@@ -67,6 +67,12 @@ export default {
         loadMap() {
             loadBMap().then(() => {
                 this.getmap();
+                /*setTimeout(function() {
+                var bmap = this.getmap().myChart.getModel().getComponent("bmap").getBMap();
+                bmap.setMapStyleV2({
+                  styleId: '340376fcbdf014e316630223baa318b0' // 在此处填入您在百度地图开放平台创建的个性化样式ID
+                });
+              }, 100);*/
             });
         },
 
@@ -105,7 +111,7 @@ export default {
                             productName: data[i].productName,
                             activeTime: data[i].activeTime == null ? '' : data[i].activeTime,
                             deviceId: data[i].deviceId,
-                            serialNumber: data[i].serialNumber,
+                            //serialNumber: data[i].serialNumber,
                             locationWay: data[i].locationWay,
                         });
                     }
@@ -160,141 +166,18 @@ export default {
                     center: [106, 37.5],
                     zoom: 5,
                     // 大屏用zomm缩放，导致地图缩放中心点会偏移
-                    roam: 'move',
-                    mapStyle: {
-                        styleJson: [{
-                                featureType: 'water',
-                                elementType: 'all',
-                                stylers: {
-                                    color: '#3863db'
-                                }
-                            },
-                            {
-                                featureType: 'land',
-                                elementType: 'all',
-                                stylers: {
-                                    color: '#0e2e87'
-                                }
-                            },
-                            {
-                                featureType: 'railway',
-                                elementType: 'all',
-                                stylers: {
-                                    visibility: 'off'
-                                }
-                            },
-                            {
-                                featureType: 'highway',
-                                elementType: 'all',
-                                stylers: {
-                                    visibility: 'off',
-                                    color: '#fdfdfd'
-                                }
-                            },
-                            {
-                                featureType: 'highway',
-                                elementType: 'labels',
-                                stylers: {
-                                    visibility: 'off',
-                                    visibility: 'off'
-                                }
-                            },
-                            {
-                                featureType: 'arterial',
-                                elementType: 'geometry',
-                                stylers: {
-                                    visibility: 'off',
-                                    color: '#fefefe'
-                                }
-                            },
-                            {
-                                featureType: 'arterial',
-                                elementType: 'geometry.fill',
-                                stylers: {
-                                    visibility: 'off',
-                                    color: '#fefefe'
-                                }
-                            },
-                            {
-                                featureType: 'poi',
-                                elementType: 'all',
-                                stylers: {
-                                    visibility: 'off',
-                                    visibility: 'off'
-                                }
-                            },
-                            {
-                                featureType: 'green',
-                                elementType: 'all',
-                                stylers: {
-                                    visibility: 'off'
-                                }
-                            },
-                            {
-                                featureType: 'subway',
-                                elementType: 'all',
-                                stylers: {
-                                    visibility: 'off'
-                                }
-                            },
-                            {
-                                featureType: 'manmade',
-                                elementType: 'all',
-                                stylers: {
-                                    visibility: 'off',
-                                    color: '#d1d1d1'
-                                }
-                            },
-                            {
-                                featureType: 'local',
-                                elementType: 'all',
-                                stylers: {
-                                    visibility: 'off',
-                                    color: '#d1d1d1'
-                                }
-                            },
-                            {
-                                featureType: 'arterial',
-                                elementType: 'labels',
-                                stylers: {
-                                    visibility: 'off'
-                                }
-                            },
-                            {
-                                featureType: 'boundary',
-                                elementType: 'all',
-                                stylers: {
-                                    color: '#23cdd8'
-                                }
-                            },
-                            {
-                                featureType: 'building',
-                                elementType: 'all',
-                                stylers: {
-                                    visibility: 'off',
-                                    color: '#d1d1d1'
-                                }
-                            },
-                            {
-                                featureType: 'label',
-                                elementType: 'labels.text.fill',
-                                stylers: {
-                                    color: '#264194',
-                                    visibility: 'off'
-                                }
-                            }
-                        ]
-                    }
+                    roam: 'move'
                 },
-                series: [{
+                series: [
+                  {
                         type: 'scatter',
                         coordinateSystem: 'bmap',
                         data: convertData(this.deviceList, 1),
                         symbolSize: 10,
                         itemStyle: {
                             color: '#e8fc05'
-                        }
-                    },
+                                   }
+                        },
                     {
                         type: 'scatter',
                         coordinateSystem: 'bmap',
@@ -336,9 +219,18 @@ export default {
                 ]
             };
             option && myChart.setOption(option, true);
+            setTimeout(function() {
+              var bmapComponent = myChart.getModel().getComponent('bmap');
+              var map = bmapComponent.getBMap(); // 正确的获取方法
+              map.setMapStyleV2({
+                styleId: '340376fcbdf014e316630223baa318b0'
+              });
+              }, 100);
+
         },
     },
 };
+
 </script>
 
 <style lang="scss">

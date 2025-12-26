@@ -99,20 +99,20 @@
             <if test="nickname != null  and nickname != ''">and nickname like concat('%', #{nickname}, '%')</if>
             <if test="avatar != null  and avatar != ''">and avatar = #{avatar}</if>
             <if test="gender != null ">and gender = #{gender}</if>
-            and del_flag = 0
+            and del_flag = '0'
         </where>
     </select>
 
     <select id="selectSocialUserBySocialUserId" parameterType="Long" resultMap="SocialUserResult">
         <include refid="selectSocialUserVo"/>
         where social_user_id = #{socialUserId}
-        and del_flag = 0
+        and del_flag = '0'
     </select>
 
     <select id="selectOneByOpenIdAndUnionId" resultMap="SocialUserResult">
         <include refid="selectSocialUserVo"/>
         where open_id = #{openId}
-        and del_flag = 0
+        and del_flag = '0'
         <if test="unionId != null and unionId != ''">and union_id = #{unionId}</if>
     </select>
 
@@ -121,7 +121,7 @@
         from iot_social_user
         where union_id = #{unionId}
         and sys_user_id is not null
-        and del_flag = 0
+        and del_flag = '0'
         order by social_user_id desc
         limit 1
     </select>
@@ -129,7 +129,7 @@
     <select id="selectBySysUserId" resultType="com.fastbee.iot.domain.SocialUser">
         <include refid="selectSocialUserVo"/>
         where sys_user_id = #{sysUserId}
-        and del_flag = 0
+        and del_flag = '0'
     </select>
 
 
@@ -250,7 +250,7 @@
 
     <delete id="deleteBySysUserIdAndSourceClient">
         update iot_social_user
-        set del_flag = 1,
+        set del_flag = '1',
             update_time = now()
         where sys_user_id = #{sysUserId}
         and source_client in
@@ -261,7 +261,7 @@
 
     <delete id="deleteBySysUserIdsAndSourceClient">
         update iot_social_user
-        set del_flag = 1,
+        set del_flag = '1',
         update_time = now()
         where sys_user_id in
         <foreach item="sysUserId" collection="sysUserIds" open="(" separator="," close=")">

@@ -94,7 +94,7 @@ public class DataBaseHelper {
             return String.format("instr(','||%s||',' , ',%s,') <> 0", var2, var);
         }
         // find_in_set(100 , '0,100,101')
-        return String.format("find_in_set(%s , %s) <> 0", var, var2);
+        return String.format("position(CAST(%s AS VARCHAR) in %s) <> 0", var, var2);
     }
 
     public static String findInSetColumn(String var1, String var2) {
@@ -111,7 +111,7 @@ public class DataBaseHelper {
             return String.format("instr(','||%s||',' , ','||%s||',') <> 0", var2, var);
         }
         // find_in_set(de.dept_id , '0,100,101')
-        return String.format("find_in_set(%s , '%s') <> 0", var, var2);
+        return String.format("position(CAST(%s AS VARCHAR) in '%s') <> 0", var, var2);
     }
 
     /**

@@ -430,7 +430,7 @@ export default {
               productName: data[i].productName,
               activeTime: data[i].activeTime == null ? '' : data[i].activeTime,
               deviceId: data[i].deviceId,
-              serialNumber: data[i].serialNumber,
+              //serialNumber: data[i].serialNumber,
               locationWay: data[i].locationWay,
             });
           }
@@ -493,124 +493,9 @@ export default {
         bmap: {
           center: [133, 38],
           zoom: 5,
-          roam: true,
-          mapStyle: {
-            styleJson: [
-              {
-                featureType: 'water',
-                elementType: 'all',
-                stylers: {
-                  color: '#a0cfff',
-                },
-              },
-              {
-                featureType: 'land',
-                elementType: 'all',
-                stylers: {
-                  color: '#fafafa', // #fffff8 淡黄色
-                },
-              },
-              {
-                featureType: 'railway',
-                elementType: 'all',
-                stylers: {
-                  visibility: 'off',
-                },
-              },
-              {
-                featureType: 'highway',
-                elementType: 'all',
-                stylers: {
-                  color: '#fdfdfd',
-                },
-              },
-              {
-                featureType: 'highway',
-                elementType: 'labels',
-                stylers: {
-                  visibility: 'off',
-                },
-              },
-              {
-                featureType: 'arterial',
-                elementType: 'geometry',
-                stylers: {
-                  color: '#fefefe',
-                },
-              },
-              {
-                featureType: 'arterial',
-                elementType: 'geometry.fill',
-                stylers: {
-                  color: '#fefefe',
-                },
-              },
-              {
-                featureType: 'poi',
-                elementType: 'all',
-                stylers: {
-                  visibility: 'off',
-                },
-              },
-              {
-                featureType: 'green',
-                elementType: 'all',
-                stylers: {
-                  visibility: 'off',
-                },
-              },
-              {
-                featureType: 'subway',
-                elementType: 'all',
-                stylers: {
-                  visibility: 'off',
-                },
-              },
-              {
-                featureType: 'manmade',
-                elementType: 'all',
-                stylers: {
-                  color: '#d1d1d1',
-                },
-              },
-              {
-                featureType: 'local',
-                elementType: 'all',
-                stylers: {
-                  color: '#d1d1d1',
-                },
-              },
-              {
-                featureType: 'arterial',
-                elementType: 'labels',
-                stylers: {
-                  visibility: 'off',
-                },
-              },
-              {
-                featureType: 'boundary',
-                elementType: 'all',
-                stylers: {
-                  color: '#999999',
-                },
-              },
-              {
-                featureType: 'building',
-                elementType: 'all',
-                stylers: {
-                  color: '#d1d1d1',
-                },
-              },
-              {
-                featureType: 'label',
-                elementType: 'labels.text.fill',
-                stylers: {
-                  color: '#999999',
-                },
-              },
-            ],
-          },
+          roam: true
         },
+
         series: [
           {
             type: 'scatter',
@@ -665,6 +550,13 @@ export default {
       };
 
       option && myChart.setOption(option);
+      setTimeout(function() {
+        var bmapComponent = myChart.getModel().getComponent('bmap');
+        var map = bmapComponent.getBMap(); // 正确的获取方法
+        map.setMapStyleV2({
+          styleId: '340376fcbdf014e316630223baa318b0'
+        });
+      }, 100);
     },
 
     drawPieCpu() {
